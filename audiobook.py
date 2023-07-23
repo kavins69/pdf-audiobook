@@ -5,8 +5,6 @@ import pygame
 import time
 import PyPDF2
 from PyPDF2 import PdfReader
-import asyncio
-from mutagen.mp3 import MP3
 import tkinter as tk
 
 def speak(text):
@@ -31,6 +29,7 @@ def read(book):
     entry.place(x=200,y=190)
     def click():
         a=repr(entry.get())
+        root1.destroy()
         print(a[1:len(a)-1])
         a=int(a[1:len(a)-1])
         READ(a-1)
@@ -38,7 +37,6 @@ def read(book):
     button2.place(x=280,y=250)
     
     def READ(i):
-        root1.destroy()
         pdfFileObj = open(book, 'rb')
         pdfReader = PdfReader(pdfFileObj)
         pageObj = pdfReader.pages[i]
